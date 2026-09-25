@@ -325,7 +325,7 @@ function tratarChat(): never
     $contents = suporteValidarMensagens($corpo['mensagens'] ?? null);
     if ($contents === null) suporteResponderErro(400, 'Mensagem inválida.');
 
-    $perfil = in_array($corpo['perfil'] ?? null, ROLES_VALIDAS, true) ? $corpo['perfil'] : null;
+    $perfil = in_array($corpo['perfil'] ?? null, ROLES_VALIDOS, true) ? $corpo['perfil'] : null;
     $apiKey = trim(getenv('GEMINI_API_KEY') ?: '');
     if ($apiKey === '') suporteResponderErro(503, 'O suporte ainda não foi configurado. Avise o administrador do sistema.', 'nao_configurado');
     if (str_contains($apiKey, "\r") || str_contains($apiKey, "\n")) suporteResponderErro(503, 'O suporte está mal configurado. Avise o administrador do sistema.', 'nao_configurado');
